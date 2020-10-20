@@ -40,9 +40,23 @@ for(let i = 0; i < size ; i ++ ){
     document.querySelectorAll(".drum")[i].addEventListener("click",function () {
             var buttonInnerHTML = this.innerHTML
             PlaySound(buttonInnerHTML)
+            buttonAnimation(buttonInnerHTML)
     })   
 }
 // find which key was pressed
 addEventListener("keypress", function(event) {
         PlaySound(event.key)
+        buttonAnimation(event.key)
+
 })
+
+function buttonAnimation(currentKey){
+
+    var activeButton = document.querySelector("." + currentKey)
+    activeButton.classList.add("pressed")
+    setTimeout(function(){
+        activeButton.classList.remove("pressed")
+    },100)
+
+}
+
